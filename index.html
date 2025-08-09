@@ -4,14 +4,23 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>マインスイーパー</title>
+  <!-- ここでCSSを読み込む -->
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- ここにゲーム本体のHTML/CSS/JavaScriptを含めています -->
-  <!-- 今まで作ったマインスイーパーコードを貼り付けています -->
+  <h1>マインスイーパー</h1>
 
-  <!-- 実際のゲームコードはCSSやJavaScriptを含めた完全版です -->
-  <!-- このindex.htmlファイルをGitHub Pagesにアップロードしてください -->
+  <!-- スコア表示と顔ボタン -->
+  <div id="hud">
+    <div class="counter" id="mineCount">010</div>
+    <button id="resetBtn" title="新しいゲーム">🙂</button>
+    <div class="timer" id="timer">000</div>
+  </div>
 
-  <!-- コードは添付の完全版HTMLファイルから取得済みです -->
+  <!-- 盤面 -->
+  <div id="board"></div>
+
+  <!-- ここでJSを読み込む -->
+  <script src="script.js"></script>
 </body>
 </html>
