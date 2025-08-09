@@ -4,23 +4,41 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>マインスイーパー</title>
-  <!-- ここでCSSを読み込む -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <h1>マインスイーパー</h1>
+  <header>
+    <h1>🧠 夏休み自由研究：マインスイーパー</h1>
+    <div class="subtitle">ドキドキ！どこに地雷があるかな？どこまで早いタイムが出せるかな？</div>
+  </header>
 
-  <!-- スコア表示と顔ボタン -->
-  <div id="hud">
-    <div class="counter" id="mineCount">010</div>
-    <button id="resetBtn" title="新しいゲーム">🙂</button>
-    <div class="timer" id="timer">000</div>
+  <div id="controls">
+    難易度：
+    <select id="difficulty">
+      <option value="beginner">ビギナー (9x9 / 10)</option>
+      <option value="intermediate">中級 (16x16 / 40)</option>
+      <option value="expert">上級 (30x16 / 99)</option>
+    </select>
   </div>
 
-  <!-- 盤面 -->
+  <div id="hud">
+    <div class="led" id="mineCounter">000</div>
+    <button id="resetBtn" title="リセット">🙂</button>
+    <div class="led" id="timer">000</div>
+  </div>
+
   <div id="board"></div>
 
-  <!-- ここでJSを読み込む -->
+  <div id="howto">
+    <h2>あそびかた</h2>
+    <ul>
+      <li>クリック（タップ）でマスを開く</li>
+      <li>右クリック（長押し）で旗 🚩 を立てる</li>
+      <li>数字は周囲の地雷の数を示す</li>
+      <li>全ての安全なマスを開くとクリア</li>
+    </ul>
+  </div>
+
   <script src="script.js"></script>
 </body>
 </html>
