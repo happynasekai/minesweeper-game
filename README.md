@@ -1,2 +1,2 @@
 # minesweeper-game
-「HTML/CSS/JSで作ったマインスイーパー」
+「HTML/CSS/JavaScriptで作ったマインスイーパー」
