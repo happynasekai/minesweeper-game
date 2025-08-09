@@ -1,96 +1,77 @@
-/* style.css - マインスイーパーの見た目を設定 */
-
-:root {
-  --cell-size: 32px;
-  --border-color: #7b7b7b;
-}
+:root { --cell-size: 40px; }
+@media (max-width: 768px) { :root { --cell-size: 34px; } }
+@media (max-width: 480px) { :root { --cell-size: 28px; } }
 
 body {
-  font-family: 'Segoe UI', sans-serif;
-  background-color: #bdbdbd;
-  margin: 0;
-  padding: 0;
+  background-color: #0f172a;
+  color: #e5e7eb;
+  font-family: system-ui, sans-serif;
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px;
+  margin: 0;
 }
+header { margin-bottom: 10px; text-align: center; }
+h1 { font-size: 1.5rem; margin: 0; }
+.subtitle { font-size: 1rem; color: #94a3b8; }
+#controls { margin-bottom: 12px; }
+select { padding: 4px; font-size: 1rem; }
 
-h1 {
-  margin-top: 20px;
-}
-
+/* HUD */
 #hud {
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
-  background: #c0c0c0;
+  gap: 8px;
   padding: 6px;
-  border: 2px solid var(--border-color);
-  border-bottom: none;
-  width: fit-content;
+  margin: 12px 0;
+  background: #1f2937;
+  border-radius: 8px;
 }
-
-.counter, .timer {
-  font-family: monospace;
-  font-size: 1.5em;
-  background: black;
-  color: red;
-  padding: 2px 6px;
+.led {
+  font: 700 26px/1 monospace;
+  letter-spacing: 2px;
+  color: #ff2a2a;
+  background: #111;
+  padding: 4px 6px;
+  width: 90px;
+  text-align: right;
   border-radius: 4px;
 }
-
+#mineCounter{ justify-self: start; }
+#timer{ justify-self: end; }
 #resetBtn {
-  font-size: 1.5em;
-  cursor: pointer;
-  background: #e0e0e0;
-  border: 2px solid var(--border-color);
-  border-radius: 4px;
-  padding: 2px 8px;
+  width: 36px; height: 36px; border-radius: 6px;
+  background: #ece9d8; font-size: 22px; line-height: 1; cursor: pointer;
+  justify-self: center;
 }
 
+/* 盤面 */
 #board {
   display: grid;
-  grid-template-columns: repeat(var(--cols), var(--cell-size));
-  grid-template-rows: repeat(var(--rows), var(--cell-size));
-  gap: 1px;
-  background-color: var(--border-color);
-  border: 2px solid var(--border-color);
+  gap: 2px;
+  padding: 6px;
+  background-color: #1f2937;
+  border-radius: 8px;
+  transition: transform .2s ease;
 }
+#board.over .cell{ pointer-events: none; }
+@keyframes shake { 0%{transform:translate(0);} 25%{transform:translate(-6px,0);} 50%{transform:translate(6px,0);} 75%{transform:translate(-3px,0);} 100%{transform:translate(0);} }
+@keyframes flash { 0%,100%{ background:#ffb3b3; } 50%{ background:#ff4d4d; } }
+#board.boom { animation: shake .35s ease-in-out 2; }
+.cell.hit { animation: flash .8s ease-in-out 2; border-color:#a00; }
 
 .cell {
-  width: var(--cell-size);
-  height: var(--cell-size);
+  width: var(--cell-size); height: var(--cell-size);
   background-color: #c0c0c0;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-weight: bold;
-  cursor: pointer;
-  user-select: none;
-}
-
-.cell.revealed {
-  background-color: #e0e0e0;
-  cursor: default;
-}
-
-.cell.mine {
-  background-color: red;
-}
-
-.cell.flag {
-  color: red;
-}
-
-/* 遊び方や難易度選択 */
-#controls {
-  margin: 10px 0;
-  display: flex;
-  gap: 8px;
-}
-
-button {
-  padding: 6px 12px;
-  font-size: 1em;
+  border-top: 2px solid white; border-left: 2px solid white;
+  border-bottom: 2px solid #7b7b7b; border-right: 2px solid #7b7b7b;
+  display: flex; justify-content: center; align-items: center;
+  font-weight: bold; font-size: calc(var(--cell-size) * 0.6);
   cursor: pointer;
 }
+.revealed { background-color: #bdbdbd; border: 1px solid #7b7b7b; }
+.n1 { color: blue; } .n2 { color: green; } .n3 { color: red; } .n4 { color: navy; }
+.n5 { color: maroon; } .n6 { color: teal; } .n7 { color: black; } .n8 { color: gray; }
+.flag { color: red; } .mine { color: black; }
