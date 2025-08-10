@@ -62,7 +62,7 @@ select { padding: 4px; font-size: 1rem; }
   font-family: "Segoe UI Emoji","Apple Color Emoji","Noto Color Emoji",system-ui,sans-serif;
 
   /* HUD内でも中央に */
-  justify-self: center;
+  justify-self: left;
 }
 
 /* 盤面 */
